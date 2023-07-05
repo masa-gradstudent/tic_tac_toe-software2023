@@ -7,9 +7,9 @@ import (
 func TestCreate(t *testing.T) {
 	b := create_board()
 	expected := [3][3]string{
-		{"", "", ""},
-		{"", "", ""},
-		{"", "", ""},
+		{".", ".", "."},
+		{".", ".", "."},
+		{".", ".", "."},
 	}
 
 	if b.tokens != expected {
@@ -35,17 +35,26 @@ func TestGetToken02(t *testing.T) {
 
 func TestPutToken01(t *testing.T) {
     b := create_board()
-    b.put(0, 1, "o")
-    if b.get(0, 1) != "o" {
+    is_put := b.put(0, 1, "o")
+    if !(is_put && b.get(0, 1) == "o") {
         t.Errorf("TestPutToken01 Error")
     }
 }
 
 func TestPutToken02(t *testing.T) {
     b := create_board()
-    b.put(1, 0, "x")
-    if b.get(1, 0) != "x" {
+    is_put := b.put(1, 0, "x")
+    if !(is_put && b.get(1, 0) == "x") {
         t.Errorf("TestPutToken02 Error")
+    }
+}
+
+func TestPutToken03(t *testing.T) {
+    b := create_board()
+    b.put(1, 0, "x")
+    is_put := b.put(1, 0, "o")
+    if !(!is_put && b.get(1, 0) == "x") {
+        t.Errorf("TestPutToken03 Error")
     }
 }
 
@@ -74,7 +83,15 @@ func TestCheckWinner03(t *testing.T) {
     b.put(0, 0, "o")
     b.put(1, 1, "x")
     b.put(2, 2, "o")
-    if b.check_winner() != "" {
+    if b.check_winner() != "." {
         t.Errorf("TestCheckWinner03 Error")
+    }
+}
+
+func TestConvert(t *testing.T) {
+    input := "1,2"
+    x, y, is_convert := convert_coordinate(input)
+    if !(is_convert && x == 1 && y == 2) {
+        t.Errorf("TestConvert Error")
     }
 }
