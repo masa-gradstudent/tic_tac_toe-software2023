@@ -19,9 +19,19 @@ func (b *Board) get(x, y int) string {
 }
 
 func (b *Board) check_winner() string {
-	if b.get(1, 1) == "x" {
-		return ""
-	} else {
+	for i := 0; i < 3; i++ {
+		if b.get(i, 0) == b.get(i, 1) && b.get(i, 1) == b.get(i, 2) {
+			return b.get(i, 0)
+		}
+		if b.get(0, i) == b.get(1, i) && b.get(1, i) == b.get(2, i) {
+			return b.get(0, i)
+		}
+	}
+	if b.get(0, 0) == b.get(1, 1) && b.get(1, 1) == b.get(2, 2) {
 		return b.get(0, 0)
 	}
+	if b.get(0, 2) == b.get(1, 1) && b.get(1, 1) == b.get(2, 0) {
+		return b.get(0, 2)
+	}
+	return ""
 }
