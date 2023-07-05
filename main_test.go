@@ -48,3 +48,33 @@ func TestPutToken02(t *testing.T) {
         t.Errorf("TestPutToken02 Error")
     }
 }
+
+func TestCheckWinner01(t *testing.T) {
+    b := create_board()
+    b.put(0, 0, "x")
+    b.put(0, 1, "x")
+    b.put(0, 2, "x")
+    if b.check_winner() != "x" {
+        t.Errorf("TestCheckWinner01 Error")
+    }
+}
+
+func TestCheckWinner02(t *testing.T) {
+    b := create_board()
+    b.put(0, 0, "o")
+    b.put(1, 1, "o")
+    b.put(2, 2, "o")
+    if b.check_winner() != "o" {
+        t.Errorf("TestCheckWinner02 Error")
+    }
+}
+
+func TestCheckWinner03(t *testing.T) {
+    b := create_board()
+    b.put(0, 0, "o")
+    b.put(1, 1, "x")
+    b.put(2, 2, "o")
+    if b.check_winner() != "" {
+        t.Errorf("TestCheckWinner03 Error")
+    }
+}

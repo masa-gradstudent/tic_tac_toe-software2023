@@ -17,3 +17,11 @@ func (b *Board) put(x, y int, u string) {
 func (b *Board) get(x, y int) string {
 	return b.tokens[x][y]
 }
+
+func (b *Board) check_winner() string {
+	if b.get(1, 1) == "x" {
+		return ""
+	} else {
+		return b.get(0, 0)
+	}
+}
