@@ -7,9 +7,9 @@ import (
 func TestCreate(t *testing.T) {
 	b := create_board()
 	expected := [3][3]string{
-		{"", "", ""},
-		{"", "", ""},
-		{"", "", ""},
+		{" ", " ", " "},
+		{" ", " ", " "},
+		{" ", " ", " "},
 	}
 
 	if b.tokens != expected {
@@ -74,7 +74,7 @@ func TestCheckWinner03(t *testing.T) {
     b.put(0, 0, "o")
     b.put(1, 1, "x")
     b.put(2, 2, "o")
-    if b.check_winner() != "" {
+    if b.check_winner() != " " {
         t.Errorf("TestCheckWinner03 Error")
     }
 }
