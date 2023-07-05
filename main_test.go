@@ -24,3 +24,11 @@ func TestGetToken01(t *testing.T) {
         t.Errorf("TestGetToken01 Error")
     }
 }
+
+func TestGetToken02(t *testing.T) {
+    b := create_board()
+    b.tokens[1][2] = "x"
+    if b.get(1, 2) != "x" {
+        t.Errorf("TestGetToken02 Error")
+    }
+}

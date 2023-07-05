@@ -14,5 +14,5 @@ func (b *Board) put(x, y int, u string) {
 }
 
 func (b *Board) get(x, y int) string {
-	return "o"
+	return b.tokens[x][y]
 }
