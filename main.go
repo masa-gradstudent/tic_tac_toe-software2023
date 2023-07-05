@@ -11,6 +11,7 @@ func create_board() Board {
 }
 
 func (b *Board) put(x, y int, u string) {
+	b.tokens[0][1] = "o"
 }
 
 func (b *Board) get(x, y int) string {
